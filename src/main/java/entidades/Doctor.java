@@ -4,7 +4,7 @@ package entidades;
  * Clase Doctor del modelo de negocio. Representa todo objeto que sea un doctor.
  * Implementa un compareTo() donde ordena por nro. de matricula.
  *
- * @author fnang
+ * @author Angonoa Franco
  */
 public class Doctor extends Persona implements Comparable<Doctor> {
 
