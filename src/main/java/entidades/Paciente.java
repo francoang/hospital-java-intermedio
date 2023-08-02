@@ -4,7 +4,7 @@ package entidades;
  * Clase Paciente del modelo de negocio Representa a todos los pacientes del
  * sistema. Implementa un compareTo() que ordena por nroObraSocial.
  *
- * @author fnang
+ * @author Angonoa Franco
  */
 public class Paciente extends Persona {
 
