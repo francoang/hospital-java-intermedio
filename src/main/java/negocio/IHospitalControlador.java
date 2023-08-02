@@ -1,5 +1,6 @@
 package negocio;
 
+import dto.CambiarPersonaDTO;
 import entidades.Persona;
 
 /**
@@ -14,7 +15,7 @@ public interface IHospitalControlador {
     
     String borrarPersona(Persona per);
     
-    String cambiarPersona(Persona per);
+    String cambiarPersona(CambiarPersonaDTO per);
     
     String buscarPorDNI(int documento);
     

@@ -1,5 +1,6 @@
 package principal;
 
+import dto.CambiarPersonaDTO;
 import entidades.Persona;
 import gui.*;
 import javax.swing.JFrame;
@@ -47,7 +48,7 @@ public class Principal {
         car.setVisible(false);
     }
     
-    public static void cambiarPersona(Persona per, JFrame car){
+    public static void cambiarPersona(CambiarPersonaDTO per, JFrame car){
         String msjeCambiar = hospital.cambiarPersona(per);
         JOptionPane.showMessageDialog(null, msjeCambiar, "Resultado", JOptionPane.INFORMATION_MESSAGE);        
         car.setVisible(false);

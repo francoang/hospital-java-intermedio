@@ -1,6 +1,7 @@
  
 package dao;
 
+import dto.CambiarPersonaDTO;
 import entidades.Persona;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,7 +20,7 @@ public interface IPersonaDAO {
     
     int borrar(Persona per) throws SQLException;
     
-    int cambiar(Persona per) throws SQLException;
+    int cambiar(CambiarPersonaDTO per) throws SQLException;
     
     Persona buscarPorDNI(Persona per) throws SQLException;
     

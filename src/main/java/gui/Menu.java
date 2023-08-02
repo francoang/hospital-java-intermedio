@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import principal.Principal;
 
@@ -57,12 +54,10 @@ public class Menu extends javax.swing.JFrame {
         txtAreaListado.setRows(5);
         jScrollPane1.setViewportView(txtAreaListado);
 
-        menuPrincipal.setIcon(new javax.swing.ImageIcon(".\\images\\folder.png"));
         menuPrincipal.setText("Menu");
 
-        menuSalir.setIcon(new javax.swing.ImageIcon(".\\images\\exit.png"));
+        menuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir.png"))); // NOI18N
         menuSalir.setText("Salir");
-        menuSalir.setMaximumSize(new java.awt.Dimension(22767, 22767));
         menuSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSalirActionPerformed(evt);
@@ -72,10 +67,8 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(menuPrincipal);
 
-        menuPersona.setIcon(new javax.swing.ImageIcon(".\\images\\add.png"));
         menuPersona.setText("Persona");
 
-        menuCargar.setIcon(new javax.swing.ImageIcon(".\\images\\addemployee.png"));
         menuCargar.setText("Cargar");
         menuCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,10 +111,8 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(menuPersona);
 
-        menuListados.setIcon(new javax.swing.ImageIcon(".\\images\\job.png"));
         menuListados.setText("Listado");
 
-        menuTodos.setIcon(new javax.swing.ImageIcon(".\\images\\job.png"));
         menuTodos.setText("Listar todas las personas");
         menuTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,10 +171,6 @@ public class Menu extends javax.swing.JFrame {
         new BorrarPersona().setVisible(true);
     }//GEN-LAST:event_menuBajaActionPerformed
 
-    private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_menuSalirActionPerformed
-
     private void menuCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargarActionPerformed
         new CargarPersona().setVisible(true);
     }//GEN-LAST:event_menuCargarActionPerformed
@@ -212,6 +199,10 @@ public class Menu extends javax.swing.JFrame {
     private void menuCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCambiarActionPerformed
         new CambiarPersona().setVisible(true);
     }//GEN-LAST:event_menuCambiarActionPerformed
+
+    private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_menuSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

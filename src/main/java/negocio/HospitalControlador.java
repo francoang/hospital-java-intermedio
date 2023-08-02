@@ -2,6 +2,7 @@ package negocio;
 
 import dao.IPersonaDAO;
 import dao.PersonaDAO;
+import dto.CambiarPersonaDTO;
 import entidades.Persona;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -88,7 +89,7 @@ public class HospitalControlador implements IHospitalControlador{
     }
 
     @Override
-    public String cambiarPersona(Persona per) {
+    public String cambiarPersona(CambiarPersonaDTO per) {
         try {
             int cambios = personaDao.cambiar(per);
             conn.commit();

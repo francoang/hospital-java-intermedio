@@ -2,3 +2,9 @@
 target/classes/.netbeans_automatic_build
 *.class
 target/classes/entidades/Doctor.class
+*.jar
+*.lst
+*.lst
+*.lst
+*.class
+*.class

@@ -1,5 +1,6 @@
 package dao;
 
+import dto.CambiarPersonaDTO;
 import entidades.Doctor;
 import entidades.Paciente;
 import java.util.List;
@@ -155,39 +156,36 @@ public class PersonaDAO implements IPersonaDAO{
     }
     
     @Override
-    public int cambiar(Persona per) throws SQLException {
+    public int cambiar(CambiarPersonaDTO per) throws SQLException {
         int cambios = 0;
         Connection conn = verificarConexion();
         PreparedStatement pstm;
         ResultSet rs;
-
+        
+        //Consulta si existe el paciente
         pstm = conn.prepareStatement(SQL_CAMBIAR_PACIENTE);
         pstm.setInt(1, per.getDocumento());
-        rs= pstm.executeQuery();        
-        boolean resultado = rs.next();
+        rs = pstm.executeQuery();
         
-        if(resultado){
+        if( rs.next() ){
             int idPaciente = rs.getInt("idPaciente");
-            int documento = rs.getInt("documento");
-            String nombreApe = rs.getString("nombreApellido");
-            String obraSocial = rs.getString("obraSocial");            
-            Boolean obSoc = obraSocial.equalsIgnoreCase("S");
+            String nombreApe = rs.getString("nombreApellido");         
             
-            Paciente paciente = new Paciente(obSoc, idPaciente, documento, nombreApe);
-            
+            //Elimino al paciente de la tabla Paciente
             pstm = conn.prepareStatement(SQL_DELETE_PACIENTE);
-            pstm.setInt(1, paciente.getIdPaciente());
+            pstm.setInt(1, idPaciente);
             cambios += pstm.executeUpdate();
             
-            pstm = conn.prepareStatement(SQL_INSERT_DOCTOR);            
-            pstm.setInt(1, paciente.getDocumento());
-            pstm.setString(2, paciente.getNombreApellido());
-            pstm.setInt(3, (int) (Math.random()*100000)); 
-            cambios += pstm.executeUpdate();
+            //Agregar el paciente a la tabla Doctor
+            pstm = conn.prepareStatement(SQL_INSERT_DOCTOR);
+            pstm.setInt(1, per.getDocumento());
+            pstm.setString(2, nombreApe);
+            pstm.setInt(3, per.getMatricula() ); 
+            cambios += pstm.executeUpdate();            
         }
         
         close(rs);
-        close(pstm);      
+        close(pstm);
         
         return cambios;
     }

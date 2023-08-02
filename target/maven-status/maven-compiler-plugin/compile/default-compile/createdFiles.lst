@@ -1,5 +1,7 @@
+gui\CambiarPersona.class
 entidades\Paciente.class
 gui\BorrarPersona.class
+gui\Menu$9.class
 gui\Menu$4.class
 gui\ModificarPersona$2.class
 entidades\Doctor.class
@@ -15,12 +17,14 @@ gui\BorrarPersona$1.class
 gui\Menu.class
 gui\ModificarPersona$1.class
 gui\ModificarPersona.class
+gui\CambiarPersona$1.class
 gui\CargarPersona.class
 gui\Menu$8.class
 negocio\HospitalControlador.class
 sql\Conexion.class
 dao\IPersonaDAO.class
 gui\CargarPersona$2.class
+dto\CambiarPersonaDTO.class
 gui\Menu$1.class
 principal\Consola.class
 entidades\Persona.class
