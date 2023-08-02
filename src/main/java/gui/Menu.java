@@ -47,8 +47,10 @@ public class Menu extends javax.swing.JFrame {
         setTitle("Hospital de Córdoba");
         setLocationByPlatform(true);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LISTADO");
+        jLabel1.setVerifyInputWhenFocusTarget(false);
 
         txtAreaListado.setEditable(false);
         txtAreaListado.setColumns(20);
@@ -83,6 +85,8 @@ public class Menu extends javax.swing.JFrame {
         });
         menuPersona.add(menuCargar);
 
+        menuModif.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuModif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
         menuModif.setText("Modificar");
         menuModif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +95,8 @@ public class Menu extends javax.swing.JFrame {
         });
         menuPersona.add(menuModif);
 
+        menuBaja.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         menuBaja.setText("Dar baja");
         menuBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +105,8 @@ public class Menu extends javax.swing.JFrame {
         });
         menuPersona.add(menuBaja);
 
+        menuBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         menuBuscar.setText("Buscar");
         menuBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +115,8 @@ public class Menu extends javax.swing.JFrame {
         });
         menuPersona.add(menuBuscar);
 
+        menuCambiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuCambiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         menuCambiar.setText("Cambiar");
         menuCambiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +130,9 @@ public class Menu extends javax.swing.JFrame {
         menuListados.setText("Listado");
         menuListados.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        menuTodos.setText("Listar todas las personas");
+        menuTodos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/people.png"))); // NOI18N
+        menuTodos.setText("Todas las personas");
         menuTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuTodosActionPerformed(evt);
@@ -128,7 +140,9 @@ public class Menu extends javax.swing.JFrame {
         });
         menuListados.add(menuTodos);
 
-        menuPacientes.setText("Listar solo pacientes");
+        menuPacientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/patient.png"))); // NOI18N
+        menuPacientes.setText("Pacientes");
         menuPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuPacientesActionPerformed(evt);
@@ -136,7 +150,9 @@ public class Menu extends javax.swing.JFrame {
         });
         menuListados.add(menuPacientes);
 
-        menuDoctores.setText("Listar solo doctores");
+        menuDoctores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuDoctores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doctor.png"))); // NOI18N
+        menuDoctores.setText("Doctores");
         menuDoctores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuDoctoresActionPerformed(evt);
@@ -156,17 +172,15 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                 .addContainerGap())
         );

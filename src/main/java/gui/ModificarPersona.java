@@ -84,7 +84,7 @@ public class ModificarPersona extends javax.swing.JFrame {
 
         fieldMat.setEnabled(false);
 
-        btnModificar.setBackground(new java.awt.Color(0, 51, 204));
+        btnModificar.setBackground(new java.awt.Color(0, 0, 153));
         btnModificar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(".\\images\\save.png"));

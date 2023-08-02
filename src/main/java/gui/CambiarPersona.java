@@ -46,7 +46,7 @@ public class CambiarPersona extends javax.swing.JFrame {
 
         jLabel2.setText("Documento:");
 
-        btnCambiar.setBackground(new java.awt.Color(0, 51, 204));
+        btnCambiar.setBackground(new java.awt.Color(0, 0, 153));
         btnCambiar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCambiar.setForeground(new java.awt.Color(255, 255, 255));
         btnCambiar.setIcon(new javax.swing.ImageIcon(".\\images\\save.png"));

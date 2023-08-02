@@ -65,7 +65,7 @@ public class BorrarPersona extends javax.swing.JFrame {
             }
         });
 
-        btnCargar.setBackground(new java.awt.Color(0, 51, 204));
+        btnCargar.setBackground(new java.awt.Color(0, 0, 153));
         btnCargar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCargar.setForeground(new java.awt.Color(255, 255, 255));
         btnCargar.setIcon(new javax.swing.ImageIcon(".\\images\\save.png"));

@@ -79,10 +79,10 @@ public class CargarPersona extends javax.swing.JFrame {
 
         fieldMat.setEnabled(false);
 
-        btnCargar.setBackground(new java.awt.Color(153, 153, 255));
-        btnCargar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
+        btnCargar.setBackground(new java.awt.Color(0, 0, 255));
+        btnCargar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         btnCargar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCargar.setIcon(new javax.swing.ImageIcon(".\\images\\save.png"));
+        btnCargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         btnCargar.setText("Cargar");
         btnCargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCargar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,8 +117,7 @@ public class CargarPersona extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(fieldMat, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(checkObraSoc)
-                            .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(checkObraSoc)))
                     .addComponent(radioDoctor))
                 .addContainerGap(87, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -126,6 +125,10 @@ public class CargarPersona extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(175, 175, 175))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,8 +154,8 @@ public class CargarPersona extends javax.swing.JFrame {
                     .addComponent(radioDoctor)
                     .addComponent(jLabel5)
                     .addComponent(fieldMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
 
