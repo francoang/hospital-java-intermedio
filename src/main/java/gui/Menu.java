@@ -45,6 +45,7 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hospital de Córdoba");
+        setLocationByPlatform(true);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("LISTADO");
@@ -55,7 +56,9 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtAreaListado);
 
         menuPrincipal.setText("Menu");
+        menuPrincipal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        menuSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir.png"))); // NOI18N
         menuSalir.setText("Salir");
         menuSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +71,10 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(menuPrincipal);
 
         menuPersona.setText("Persona");
+        menuPersona.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        menuCargar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuCargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/create.png"))); // NOI18N
         menuCargar.setText("Cargar");
         menuCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +118,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(menuPersona);
 
         menuListados.setText("Listado");
+        menuListados.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         menuTodos.setText("Listar todas las personas");
         menuTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +167,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
