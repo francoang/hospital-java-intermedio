@@ -1,1 +1,1 @@
-# hospital-java-intermedio
+# Java intermedio: Proyecto 'Hospital'
