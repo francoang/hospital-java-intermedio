@@ -9,3 +9,5 @@ target/classes/entidades/Doctor.class
 *.class
 *.class
 *.class
+*.class
+src/main/java/sql/Conexion.java
