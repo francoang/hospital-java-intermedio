@@ -9,10 +9,9 @@ import negocio.HospitalControlador;
 import negocio.IHospitalControlador;
 
 /**
- * Clase Principal. Encontraremos todo lo
- * que el usuario verá por pantalla.
+ * Clase Principal.
  *
- * @author fnang
+ * @author Angonoa Franco
  */
 public class Principal {
     

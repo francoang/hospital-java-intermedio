@@ -3,7 +3,7 @@ package dto;
 
 /**
  *
- * @author franc
+ * @author Angonoa Franco
  */
 public class CambiarPersonaDTO {
     
