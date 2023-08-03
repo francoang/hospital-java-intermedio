@@ -4,7 +4,7 @@ package entidades;
  * Clase Persona del modelo de negocio. Representa a todas las personas del
  * sistema.
  *
- * @author fnang
+ * @author Angonoa Franco
  */
 public class Persona {
 
