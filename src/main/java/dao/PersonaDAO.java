@@ -39,19 +39,42 @@ public class PersonaDAO implements IPersonaDAO{
     @Override
     public int agregar(Persona per) throws SQLException{
         Connection conn = verificarConexion();
+        int registros = 0;
+        
+        if(per instanceof Doctor){
+            registros = cargarDoctor(conn, per);
+        }else{
+            registros = cargarPaciente(conn,per);
+        }
+        
+        if(this.conexionTransaccional == null){
+            close(conn);            
+        }
+        
+        return registros;
+    }
+    
+    private int cargarDoctor(Connection conn, Persona per) throws SQLException{
         PreparedStatement pstm = conn.prepareStatement(SQL_INSERT_DOCTOR);
         Doctor doc = (Doctor) per;
         pstm.setInt(1, doc.getDocumento());
         pstm.setString(2, doc.getNombreApellido());
         pstm.setInt(3, doc.getMatricula());
         int registros = pstm.executeUpdate();
-        
         close(pstm);
-        
-        if(this.conexionTransaccional == null){
-            close(conn);            
-        }
-        
+
+        return registros;
+    }
+    
+    private int cargarPaciente(Connection conn, Persona per) throws SQLException{
+        PreparedStatement pstm = conn.prepareStatement(SQL_INSERT_PACIENTE);
+        Paciente pac = (Paciente) per;
+        pstm.setInt(1, pac.getDocumento());
+        pstm.setString(2, pac.getNombreApellido());
+        pstm.setString(3, tieneObraSocial(pac));
+        int registros = pstm.executeUpdate();
+        close(pstm);
+
         return registros;
     }
 
@@ -88,14 +111,16 @@ public class PersonaDAO implements IPersonaDAO{
         PreparedStatement pstm = conn.prepareStatement(SQL_UPDATE_PACIENTE);
         Paciente pac = (Paciente) per;
         pstm.setString(1, pac.getNombreApellido());
-
-        String obraSoc = pac.tieneObraSocial() ? "S" : "N";
-        pstm.setString(2, obraSoc);
+        pstm.setString(2, tieneObraSocial(pac));
         pstm.setInt(3, pac.getDocumento());
         int registros = pstm.executeUpdate();
         close(pstm);
 
         return registros;
+    }
+    
+    private String tieneObraSocial(Paciente pac){
+        return pac.tieneObraSocial() ? "S" : "N";
     }
     
     @Override
