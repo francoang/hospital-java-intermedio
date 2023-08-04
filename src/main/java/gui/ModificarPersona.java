@@ -8,6 +8,7 @@ import entidades.Doctor;
 import entidades.Paciente;
 import entidades.Persona;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import principal.Principal;
 
 /**
@@ -36,7 +37,7 @@ public class ModificarPersona extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         jLabel2 = new javax.swing.JLabel();
-        fieldDoc = new javax.swing.JTextField();
+        fieldIdPer = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         fieldNomApe = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -47,8 +48,8 @@ public class ModificarPersona extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         checkObraSoc = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
-        fieldId = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        fieldDoc = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
 
@@ -60,7 +61,7 @@ public class ModificarPersona extends javax.swing.JFrame {
 
         jLabel2.setText("Documento:");
 
-        fieldDoc.setEnabled(false);
+        fieldIdPer.setEnabled(false);
 
         jLabel3.setText("Nombre y apellido: ");
 
@@ -68,6 +69,7 @@ public class ModificarPersona extends javax.swing.JFrame {
 
         grupoPersona.add(radioPaciente);
         radioPaciente.setText("Es paciente");
+        radioPaciente.setEnabled(false);
         radioPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioPacienteActionPerformed(evt);
@@ -76,6 +78,7 @@ public class ModificarPersona extends javax.swing.JFrame {
 
         grupoPersona.add(radioDoctor);
         radioDoctor.setText("Es doctor");
+        radioDoctor.setEnabled(false);
         radioDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioDoctorActionPerformed(evt);
@@ -104,8 +107,13 @@ public class ModificarPersona extends javax.swing.JFrame {
 
         jLabel4.setText("ID Persona:");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton1.setText("Buscar");
+        btnBuscar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setBackground(new java.awt.Color(157, 0, 0));
         btnCancelar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -127,35 +135,42 @@ public class ModificarPersona extends javax.swing.JFrame {
             .addComponent(jSeparator2)
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(fieldNomApe)
-                                .addComponent(fieldDoc, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                                .addComponent(fieldId))))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioPaciente)
-                            .addComponent(radioDoctor))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkObraSoc)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldMat, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fieldNomApe)
+                            .addComponent(fieldIdPer, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                            .addComponent(fieldDoc)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(radioPaciente)
+                                        .addComponent(radioDoctor))
+                                    .addGap(40, 40, 40)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(checkObraSoc)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(fieldMat, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnBuscar))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,16 +178,16 @@ public class ModificarPersona extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(fieldDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldIdPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -212,17 +227,16 @@ public class ModificarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_radioPacienteActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        int idPersona = Integer.parseInt(fieldId.getText());
         int doc = Integer.parseInt(fieldDoc.getText());
         String nomApe = fieldNomApe.getText();
         
         if(radioPaciente.isSelected()){
             boolean obrSoc = checkObraSoc.isSelected();
-            Persona per = new Paciente(obrSoc, idPersona, doc, nomApe);
+            Persona per = new Paciente(obrSoc, doc, nomApe);
             Principal.modificarPersona(per, this);
         }else{
             int matric = Integer.parseInt(fieldMat.getText());
-            Persona per = new Doctor(matric, idPersona, doc, nomApe);
+            Persona per = new Doctor(matric, doc, nomApe);
             Principal.modificarPersona(per, this);
         }
         
@@ -232,16 +246,56 @@ public class ModificarPersona extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        limpieza();
+        Integer documento = Integer.parseInt(fieldDoc.getText());
+        Persona per = new Persona();
+        per.setDocumento(documento);
+        
+        Persona perMod = Principal.buscarPersona(per, this);
+        
+        if( perMod != null){
+            fieldNomApe.setEnabled(true);
+            fieldNomApe.setText(perMod.getNombreApellido());
+            
+            if( perMod instanceof Doctor){
+                Doctor doc = (Doctor) perMod; 
+                radioDoctor.setSelected(true);
+                fieldIdPer.setText(String.valueOf(doc.getIdDoctor()));
+                fieldMat.setEnabled(true);
+                fieldMat.setText(String.valueOf(doc.getMatricula()));
+            }
+            else{
+                Paciente pac = (Paciente) perMod;
+                radioPaciente.setSelected(true);
+                fieldIdPer.setText(String.valueOf(pac.getIdPaciente()));
+                checkObraSoc.setEnabled(true);
+                checkObraSoc.setSelected(pac.tieneObraSocial());
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "La persona ingresada no se encuentra registrada", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void limpieza(){
+        checkObraSoc.setSelected(false);
+        fieldMat.setText(null);
+        radioDoctor.setSelected(false);
+        radioPaciente.setSelected(false);
+        fieldMat.setEnabled(false);
+        checkObraSoc.setEnabled(false);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JCheckBox checkObraSoc;
     private javax.swing.JTextField fieldDoc;
-    private javax.swing.JTextField fieldId;
+    private javax.swing.JTextField fieldIdPer;
     private javax.swing.JTextField fieldMat;
     private javax.swing.JTextField fieldNomApe;
     private javax.swing.ButtonGroup grupoPersona;
-    private javax.swing.JButton jButton1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -15,42 +15,47 @@ import negocio.IHospitalControlador;
  */
 public class Principal {
     
-    private static IHospitalControlador hospital;
+    private static IHospitalControlador hospitalCtrl;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        hospital = new HospitalControlador();
+        hospitalCtrl = new HospitalControlador(false);
         new Menu().setVisible(true); 
     }    
 
     public static void cargarPersona(Persona per, JFrame car) {
-        String msjeAgregar = hospital.agregarPersona(per);
+        String msjeAgregar = hospitalCtrl.agregarPersona(per);
         JOptionPane.showMessageDialog(null, msjeAgregar, "Resultado", JOptionPane.INFORMATION_MESSAGE);        
         car.setVisible(false);
     } //Fin de cargarPersona()
     
     public static String listarTodos(){
-        return hospital.obtenerTodasPersonas();
+        return hospitalCtrl.obtenerTodasPersonas();
     }
     
     public static void modificarPersona(Persona per, JFrame car){
-        String msjeModificar = hospital.modificarPersona(per);
+        String msjeModificar = hospitalCtrl.modificarPersona(per);
         JOptionPane.showMessageDialog(null, msjeModificar, "Resultado", JOptionPane.INFORMATION_MESSAGE);        
         car.setVisible(false);
     }
     
     public static void borrarPersona(Persona per, JFrame car){
-        String msjeBorrar = hospital.borrarPersona(per);
+        String msjeBorrar = hospitalCtrl.borrarPersona(per);
         JOptionPane.showMessageDialog(null, msjeBorrar, "Resultado", JOptionPane.INFORMATION_MESSAGE);        
         car.setVisible(false);
     }
     
     public static void cambiarPersona(CambiarPersonaDTO per, JFrame car){
-        String msjeCambiar = hospital.cambiarPersona(per);
+        IHospitalControlador hospitalCtrl = new HospitalControlador(true);
+        String msjeCambiar = hospitalCtrl.cambiarPersona(per);
         JOptionPane.showMessageDialog(null, msjeCambiar, "Resultado", JOptionPane.INFORMATION_MESSAGE);        
         car.setVisible(false);
+    }
+    
+    public static Persona buscarPersona(Persona per, JFrame car){
+        return hospitalCtrl.buscarPorDNI(per);
     }
     
 } //Fin de la clase

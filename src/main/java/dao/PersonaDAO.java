@@ -20,12 +20,12 @@ public class PersonaDAO implements IPersonaDAO{
     private static final String SQL_SELECT_PACIENTES = "SELECT * FROM paciente";
     private static final String SQL_INSERT_DOCTOR = "INSERT INTO doctor(documento, nombreApellido, matricula) VALUES(?,?,?)";
     private static final String SQL_INSERT_PACIENTE = "INSERT INTO paciente(documento, nombreApellido, obraSocial) VALUES(?,?,?)";
-    private static final String SQL_UPDATE_DOCTOR = "UPDATE doctor SET documento = ?, nombreApellido = ?, matricula = ? WHERE idDoctor = ?";
-    private static final String SQL_UPDATE_PACIENTE = "UPDATE paciente SET documento = ?, nombreApellido = ?, obraSocial = ? WHERE idPaciente = ?";
+    private static final String SQL_UPDATE_DOCTOR = "UPDATE doctor SET nombreApellido = ?, matricula = ? WHERE documento = ?";
+    private static final String SQL_UPDATE_PACIENTE = "UPDATE paciente SET nombreApellido = ?, obraSocial = ? WHERE documento = ?";
     private static final String SQL_DELETE_DOCTOR = "DELETE FROM doctor WHERE idDoctor = ?";
     private static final String SQL_DELETE_PACIENTE = "DELETE FROM paciente WHERE idPaciente = ?";
-    private static final String SQL_SEL_WHERE_DOCTOR = "SELECT * FROM doctor WHERE idDoctor = ?";
-    private static final String SQL_SEL_WHERE_PACIENTE = "SELECT * FROM paciente WHERE idPaciente = ?";
+    private static final String SQL_SEL_WHERE_DOCTOR = "SELECT * FROM doctor WHERE documento = ?";
+    private static final String SQL_SEL_WHERE_PACIENTE = "SELECT * FROM paciente WHERE documento = ?";
     private static final String SQL_CAMBIAR_PACIENTE = "SELECT * FROM paciente WHERE documento = ?";
     
     public PersonaDAO(){
@@ -58,22 +58,46 @@ public class PersonaDAO implements IPersonaDAO{
     @Override
     public int modificar(Persona per) throws SQLException{
         Connection conn = verificarConexion();
-        PreparedStatement pstm = conn.prepareStatement(SQL_UPDATE_DOCTOR);
-        Doctor doc = (Doctor) per;
-        pstm.setInt(1, doc.getDocumento());
-        pstm.setString(2, doc.getNombreApellido());
-        pstm.setInt(3, doc.getMatricula());
-        pstm.setInt(4, doc.getIdDoctor());
-        int registros = pstm.executeUpdate();
+        int registros = 0;
         
-        close(pstm);
+        if(per instanceof Doctor){
+            registros = modificarDoctor(conn, per);
+        }else{
+            registros = modificarPaciente(conn, per);
+        }
+        
         if(this.conexionTransaccional == null){
             close(conn);            
         }
         
         return registros;
     }
+    
+    private int modificarDoctor(Connection conn, Persona per) throws SQLException{
+        PreparedStatement pstm = conn.prepareStatement(SQL_UPDATE_DOCTOR);
+        Doctor doc = (Doctor) per;
+        pstm.setString(1, doc.getNombreApellido());
+        pstm.setInt(2, doc.getMatricula());
+        pstm.setInt(3, doc.getDocumento());
+        int registros = pstm.executeUpdate();
+        close(pstm);
+        return registros;
+    }
 
+    private int modificarPaciente(Connection conn, Persona per) throws SQLException{
+        PreparedStatement pstm = conn.prepareStatement(SQL_UPDATE_PACIENTE);
+        Paciente pac = (Paciente) per;
+        pstm.setString(1, pac.getNombreApellido());
+
+        String obraSoc = pac.tieneObraSocial() ? "S" : "N";
+        pstm.setString(2, obraSoc);
+        pstm.setInt(3, pac.getDocumento());
+        int registros = pstm.executeUpdate();
+        close(pstm);
+
+        return registros;
+    }
+    
     @Override
     public int borrar(Persona per) throws SQLException {
         Connection conn = verificarConexion();
@@ -92,7 +116,26 @@ public class PersonaDAO implements IPersonaDAO{
 
     @Override
     public Persona buscarPorDNI(Persona per) throws SQLException {
-        return null;
+        Connection conn = verificarConexion(); 
+        
+        Doctor doc = buscarDoctores(conn, per);
+        return doc != null ? doc : buscarPacientes(conn, per);
+    }
+    
+    private Doctor buscarDoctores(Connection conn, Persona per) throws SQLException{
+        PreparedStatement pstm = conn.prepareStatement(SQL_SEL_WHERE_DOCTOR);
+        pstm.setInt(1, per.getDocumento());
+        ResultSet rs = pstm.executeQuery();       
+        
+        return rs.next() ? recorrerDoctores(rs) : null;        
+    }
+    
+    private Paciente buscarPacientes(Connection conn, Persona per) throws SQLException{
+        PreparedStatement pstm = conn.prepareStatement(SQL_SEL_WHERE_PACIENTE);
+        pstm.setInt(1, per.getDocumento());
+        ResultSet rs = pstm.executeQuery();       
+        
+        return rs.next() ? recorrerPacientes(rs) : null;        
     }
 
     @Override
@@ -107,6 +150,8 @@ public class PersonaDAO implements IPersonaDAO{
             close(conn);            
         }
         
+        System.out.println("Con trans: " + this.conexionTransaccional);
+        
         return personas;        
     }      
     
@@ -116,13 +161,7 @@ public class PersonaDAO implements IPersonaDAO{
         List<Persona> doctores = new ArrayList<>();
         
         while( rs.next() ){
-            int idDoctor = rs.getInt("idDoctor");
-            int documento = rs.getInt("documento");
-            String nombreApe = rs.getString("nombreApellido");
-            int matricula = rs.getInt("matricula");
-            
-            Persona persona = 
-                    new Doctor(matricula, idDoctor, documento, nombreApe);
+            Persona persona = recorrerDoctores(rs);
             doctores.add(persona);
         }
         
@@ -130,7 +169,16 @@ public class PersonaDAO implements IPersonaDAO{
         close(pstm);
         
         return doctores;
-    }    
+    }   
+    
+    private Doctor recorrerDoctores(ResultSet rs) throws SQLException{
+        int idDoctor = rs.getInt("idDoctor");
+        int documento = rs.getInt("documento");
+        String nombreApe = rs.getString("nombreApellido");
+        int matricula = rs.getInt("matricula");
+
+        return new Doctor(matricula, idDoctor, documento, nombreApe);
+    }
     
     private List<Persona> obtenerPacientes(Connection conn) throws SQLException{
         PreparedStatement pstm = conn.prepareStatement(SQL_SELECT_PACIENTES);
@@ -138,14 +186,7 @@ public class PersonaDAO implements IPersonaDAO{
         List<Persona> pacientes = new ArrayList<>();
         
         while( rs.next() ){
-            int idPaciente = rs.getInt("idPaciente");
-            int documento = rs.getInt("documento");
-            String nombreApe = rs.getString("nombreApellido");
-            String obraSocial = rs.getString("obraSocial");
-            
-            Boolean obSoc = obraSocial.equalsIgnoreCase("S");
-            
-            Persona persona = new Paciente(obSoc, idPaciente, documento, nombreApe);
+            Persona persona = recorrerPacientes(rs);
             pacientes.add(persona);
         }
         
@@ -153,6 +194,17 @@ public class PersonaDAO implements IPersonaDAO{
         close(pstm);
         
         return pacientes;
+    }
+    
+    private Paciente recorrerPacientes(ResultSet rs) throws SQLException{
+        int idPaciente = rs.getInt("idPaciente");
+        int documento = rs.getInt("documento");
+        String nombreApe = rs.getString("nombreApellido");
+        String obraSocial = rs.getString("obraSocial");
+
+        Boolean obSoc = obraSocial.equalsIgnoreCase("S");
+
+        return new Paciente(obSoc, idPaciente, documento, nombreApe);
     }
     
     @Override
@@ -186,6 +238,8 @@ public class PersonaDAO implements IPersonaDAO{
         
         close(rs);
         close(pstm);
+        
+        System.out.println("Con trans: " + this.conexionTransaccional);
         
         return cambios;
     }

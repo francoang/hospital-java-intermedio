@@ -17,7 +17,7 @@ public interface IHospitalControlador {
     
     String cambiarPersona(CambiarPersonaDTO per);
     
-    String buscarPorDNI(int documento);
+    Persona buscarPorDNI(Persona per);
     
     String obtenerTodasPersonas();
 }

@@ -7,6 +7,7 @@ import entidades.Persona;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import sql.Conexion;
 import static sql.Conexion.getConnection;
 
 /**
@@ -18,9 +19,13 @@ public class HospitalControlador implements IHospitalControlador{
     private IPersonaDAO personaDao;
     private Connection conn;
 
-    public HospitalControlador() {
-        conn = realizarConexion();
-        personaDao = new PersonaDAO(conn);
+    public HospitalControlador(boolean esTransaccion) {        
+        if(esTransaccion){
+            conn = realizarConexion();
+            personaDao = new PersonaDAO(conn);
+        }else{
+            personaDao = new PersonaDAO();
+        }
     }       
     
     private Connection realizarConexion(){
@@ -66,8 +71,12 @@ public class HospitalControlador implements IHospitalControlador{
     }
 
     @Override
-    public String buscarPorDNI(int documento) {
-        return null;
+    public Persona buscarPorDNI(Persona per) {
+        try {
+            return personaDao.buscarPorDNI(per);
+        } catch (SQLException ex) {
+            return null;
+        }
     }
 
     @Override
@@ -105,6 +114,12 @@ public class HospitalControlador implements IHospitalControlador{
                 return "NO SE HA PODIDO CAMBIAR AL PACIENTE: " + ex.getMessage();
             } catch (SQLException ex1) {
                 ex1.printStackTrace();
+            }
+        } finally {
+            try {
+                Conexion.close(conn);
+            } catch (SQLException ex) {
+                return "OCURRIO UN PROBLEMA: " + ex.getMessage();
             }
         }
         return null;
