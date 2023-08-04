@@ -1,3 +1,6 @@
+# Carpeta target
+target/
+
 # Compiled class file
 *.class
 
@@ -24,7 +27,7 @@ hs_err_pid*
 replay_pid*
 
 # Otro
-target/classes/.netbeans_automatic_build
+
 *.lst
 src/main/java/sql/Conexion.java
 *.class
