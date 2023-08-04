@@ -20,4 +20,8 @@ public interface IHospitalControlador {
     Persona buscarPorDNI(Persona per);
     
     String obtenerTodasPersonas();
+    
+    String obtenerPacientes();
+    
+    String obtenerDoctores();
 }

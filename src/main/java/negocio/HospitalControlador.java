@@ -124,5 +124,15 @@ public class HospitalControlador implements IHospitalControlador{
         }
         return null;
     }
+
+    @Override
+    public String obtenerPacientes() {
+        return null;
+    }
+
+    @Override
+    public String obtenerDoctores() {
+        return null;
+    }
     
 }

@@ -245,4 +245,14 @@ public class PersonaDAO implements IPersonaDAO{
                 this.conexionTransaccional : getConnection();
     }
 
+    @Override
+    public List<Paciente> obtenerPacientes() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public List<Doctor> obtenerDoctores() throws SQLException {
+        return null;
+    }
+
 }
