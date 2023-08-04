@@ -1,6 +1,5 @@
 package gui;
 
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import principal.Principal;
 
@@ -230,7 +229,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuModifActionPerformed
 
     private void menuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBuscarActionPerformed
-        JOptionPane.showMessageDialog(this, "Funcionalidad no implementada.", "¡Ups!", JOptionPane.WARNING_MESSAGE);        
+        new BuscarPersona().setVisible(true);
     }//GEN-LAST:event_menuBuscarActionPerformed
 
     private void menuPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPacientesActionPerformed

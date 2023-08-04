@@ -1,10 +1,6 @@
 package gui;
 
 import dto.CambiarPersonaDTO;
-import entidades.Doctor;
-import entidades.Paciente;
-import entidades.Persona;
-import javax.swing.ButtonGroup;
 import principal.Principal;
 
 /**

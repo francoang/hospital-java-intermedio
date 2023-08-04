@@ -150,8 +150,6 @@ public class PersonaDAO implements IPersonaDAO{
             close(conn);            
         }
         
-        System.out.println("Con trans: " + this.conexionTransaccional);
-        
         return personas;        
     }      
     
@@ -238,8 +236,6 @@ public class PersonaDAO implements IPersonaDAO{
         
         close(rs);
         close(pstm);
-        
-        System.out.println("Con trans: " + this.conexionTransaccional);
         
         return cambios;
     }

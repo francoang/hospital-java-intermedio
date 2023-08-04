@@ -3,7 +3,6 @@ package gui;
 import entidades.Doctor;
 import entidades.Paciente;
 import entidades.Persona;
-import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import principal.Principal;
 
@@ -11,12 +10,12 @@ import principal.Principal;
  *
  * @author franc
  */
-public class ModificarPersona extends javax.swing.JFrame {
+public class BuscarPersona extends javax.swing.JFrame {
 
     /**
      * Creates new form CargarPersona
      */
-    public ModificarPersona() {
+    public BuscarPersona() {
         initComponents();
     }
 
@@ -41,18 +40,17 @@ public class ModificarPersona extends javax.swing.JFrame {
         radioDoctor = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         fieldMat = new javax.swing.JTextField();
-        btnModificar = new javax.swing.JButton();
         checkObraSoc = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         fieldDoc = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Modificar persona");
+        setTitle("Buscar persona");
         setLocationByPlatform(true);
 
         jLabel2.setText("Documento:");
@@ -85,19 +83,6 @@ public class ModificarPersona extends javax.swing.JFrame {
 
         fieldMat.setEnabled(false);
 
-        btnModificar.setBackground(new java.awt.Color(0, 0, 153));
-        btnModificar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit2.png"))); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-
         checkObraSoc.setText("Obra social");
         checkObraSoc.setEnabled(false);
 
@@ -111,16 +96,16 @@ public class ModificarPersona extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(157, 0, 0));
-        btnCancelar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrar.setBackground(new java.awt.Color(157, 0, 0));
+        btnCerrar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
+        btnCerrar.setText("Cerrar");
+        btnCerrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnCerrarActionPerformed(evt);
             }
         });
 
@@ -131,26 +116,26 @@ public class ModificarPersona extends javax.swing.JFrame {
             .addComponent(jSeparator2)
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fieldNomApe)
-                            .addComponent(fieldIdPer, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                            .addComponent(fieldDoc)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(23, 23, 23)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(fieldNomApe)
+                                .addComponent(fieldIdPer, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                                .addComponent(fieldDoc)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(radioPaciente)
@@ -162,11 +147,10 @@ public class ModificarPersona extends javax.swing.JFrame {
                                             .addComponent(jLabel5)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(fieldMat, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnBuscar))))
+                                .addComponent(btnBuscar))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -203,9 +187,7 @@ public class ModificarPersona extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(fieldMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -222,25 +204,9 @@ public class ModificarPersona extends javax.swing.JFrame {
         checkObraSoc.setEnabled(true);
     }//GEN-LAST:event_radioPacienteActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        int doc = Integer.parseInt(fieldDoc.getText());
-        String nomApe = fieldNomApe.getText();
-        
-        if(radioPaciente.isSelected()){
-            boolean obrSoc = checkObraSoc.isSelected();
-            Persona per = new Paciente(obrSoc, doc, nomApe);
-            Principal.modificarPersona(per, this);
-        }else{
-            int matric = Integer.parseInt(fieldMat.getText());
-            Persona per = new Doctor(matric, doc, nomApe);
-            Principal.modificarPersona(per, this);
-        }
-        
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         limpieza();
@@ -251,21 +217,18 @@ public class ModificarPersona extends javax.swing.JFrame {
         Persona perMod = Principal.buscarPersona(per, this);
         
         if( perMod != null){
-            fieldNomApe.setEnabled(true);
             fieldNomApe.setText(perMod.getNombreApellido());
             
             if( perMod instanceof Doctor){
                 Doctor doc = (Doctor) perMod; 
                 radioDoctor.setSelected(true);
                 fieldIdPer.setText(String.valueOf(doc.getIdDoctor()));
-                fieldMat.setEnabled(true);
                 fieldMat.setText(String.valueOf(doc.getMatricula()));
             }
             else{
                 Paciente pac = (Paciente) perMod;
                 radioPaciente.setSelected(true);
                 fieldIdPer.setText(String.valueOf(pac.getIdPaciente()));
-                checkObraSoc.setEnabled(true);
                 checkObraSoc.setSelected(pac.tieneObraSocial());
             }
         }else{
@@ -278,14 +241,11 @@ public class ModificarPersona extends javax.swing.JFrame {
         fieldMat.setText(null);
         radioDoctor.setSelected(false);
         radioPaciente.setSelected(false);
-        fieldMat.setEnabled(false);
-        checkObraSoc.setEnabled(false);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JCheckBox checkObraSoc;
     private javax.swing.JTextField fieldDoc;
     private javax.swing.JTextField fieldIdPer;
