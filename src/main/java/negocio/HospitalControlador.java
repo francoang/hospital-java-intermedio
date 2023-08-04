@@ -7,8 +7,6 @@ import entidades.Persona;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import static sql.Conexion.getConnection;
 
 /**
@@ -75,17 +73,22 @@ public class HospitalControlador implements IHospitalControlador{
     @Override
     public String obtenerTodasPersonas() {
         List<Persona> personas;
+        StringBuilder cadena = new StringBuilder();
         
         try {
             personas = personaDao.obtenerTodasPersonas();
+            for (Persona persona : personas) {
+                //Para personalizar la salida
+                cadena.append(persona).append("\n");
+            }
             if (!personas.isEmpty()) {
-                return "LISTADO DE PERSONAS REGISTRADAS: \n" + personas;
+                return cadena.toString();
+            }else{
+                return "NO HAY PERSONAS REGISTRADAS.\n";
             }
         } catch (SQLException ex) {
             return "OCURRIO UN ERROR: " + ex.getMessage();
-        }
-
-        return "AÚN NO HAY PERSONAS REGISTRADAS.\n";
+        }        
     }
 
     @Override

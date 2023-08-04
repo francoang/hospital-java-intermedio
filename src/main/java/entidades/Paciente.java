@@ -47,7 +47,7 @@ public class Paciente extends Persona {
 
     @Override
     public String toString() {
-        return "\nPaciente: Tiene obra social? " + obraSocial 
+        return "Paciente => ¿Tiene obra social? " + obraSocial 
                 + "\t " + super.toString();
     }
 

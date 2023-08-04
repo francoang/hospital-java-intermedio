@@ -44,8 +44,8 @@ public class Doctor extends Persona implements Comparable<Doctor> {
 
     @Override
     public String toString() {
-        return "\nDoctor: Matricula: " + matricula 
-                + "\t " + super.toString();
+        return "Doctor => Matricula: " + matricula 
+                + "\t\t " + super.toString();
     }
 
     @Override
