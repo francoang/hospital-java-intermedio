@@ -237,7 +237,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuPacientesActionPerformed
 
     private void menuDoctoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDoctoresActionPerformed
-        JOptionPane.showMessageDialog(this, "Funcionalidad no implementada.", "¡Ups!", JOptionPane.WARNING_MESSAGE);
+//        JOptionPane.showMessageDialog(this, "Funcionalidad no implementada.", "¡Ups!", JOptionPane.WARNING_MESSAGE);
+        //Se activa el boton limpiar
+        btnLimpiar.setEnabled(true);
+        
+        //Gestionamos la lista
+        String listado = Principal.listarDoctores();
+        txtAreaListado.setText(listado);
     }//GEN-LAST:event_menuDoctoresActionPerformed
 
     private void menuCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCambiarActionPerformed

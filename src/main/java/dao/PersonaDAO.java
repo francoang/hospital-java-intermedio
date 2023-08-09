@@ -277,7 +277,21 @@ public class PersonaDAO implements IPersonaDAO{
 
     @Override
     public List<Doctor> obtenerDoctores() throws SQLException {
-        return null;
+        Connection conn = verificarConexion();
+        PreparedStatement pstm = conn.prepareStatement(SQL_SELECT_DOCTORES);
+        ResultSet rs = pstm.executeQuery();
+        
+        List<Doctor> doctores = new ArrayList<>();
+        
+        while(rs.next() ){
+            Doctor doctor = recorrerDoctores(rs);
+            doctores.add(doctor);
+        }
+        
+        close(rs);
+        close(pstm);
+        
+        return doctores;
     }
 
 }
