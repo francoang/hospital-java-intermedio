@@ -60,7 +60,7 @@ public class Principal {
     }
     
     public static String listarDoctores(){
-        return null;
+        return hospitalCtrl.obtenerDoctores();
     }
     
     public static String listarPacientes(){
