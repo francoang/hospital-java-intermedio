@@ -277,7 +277,21 @@ public class PersonaDAO implements IPersonaDAO{
 
     @Override
     public List<Doctor> obtenerDoctores() throws SQLException {
-        return null;
-    }
-
-}
+                
+        Connection conn = verificarConexion();    
+        List<Persona> personas =  obtenerDoctores( conn);
+        List<Doctor> doctores = new ArrayList<>();
+        
+        for (Persona persona : personas) {
+            doctores.add((Doctor)persona);
+        }
+                
+        if(this.conexionTransaccional == null){
+            close(conn);            
+        }
+        
+        return doctores;      
+    }      
+    
+    
+}//
