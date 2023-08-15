@@ -4,6 +4,7 @@ import dao.IPersonaDAO;
 import dao.PersonaDAO;
 import dto.CambiarPersonaDTO;
 import entidades.Doctor;
+import entidades.Paciente;
 import entidades.Persona;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -128,7 +129,25 @@ public class HospitalControlador implements IHospitalControlador{
 
     @Override
     public String obtenerPacientes() {
-        return null;
+        //return null;
+        List<Paciente> pacientes;
+        
+        StringBuilder cadena = new StringBuilder();
+        
+        try {
+            pacientes = personaDao.obtenerPacientes();
+            for (Paciente paciente : pacientes) {
+                cadena.append(pacientes).append("\n");
+            }
+            
+            if (!pacientes.isEmpty()) {
+                return cadena.toString();
+            }else{
+                return "NO HAY PACIENTES REGISTRADOS.\n";
+            }
+        } catch (SQLException ex) {
+            return "OCURRIO UN ERROR: " + ex.getMessage();
+        }
     }
 
     @Override
