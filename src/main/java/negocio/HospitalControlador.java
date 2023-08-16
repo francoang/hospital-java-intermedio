@@ -136,7 +136,7 @@ public class HospitalControlador implements IHospitalControlador{
         try {
             pacientes = personaDao.obtenerPacientes();
             for (Paciente paciente : pacientes) {
-                cadena.append(pacientes).append("\n");
+                cadena.append(paciente).append("\n");
             }
             
             if (!pacientes.isEmpty()) {
@@ -158,7 +158,7 @@ public class HospitalControlador implements IHospitalControlador{
             doctores = personaDao.obtenerDoctores();
             for (Doctor doctor : doctores) {
                 //Para personalizar la salida
-                cadena.append(doctores).append("\n");
+                cadena.append(doctor).append("\n");
             }
             if (!doctores.isEmpty()) {
                 return cadena.toString();
