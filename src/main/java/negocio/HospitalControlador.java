@@ -129,7 +129,6 @@ public class HospitalControlador implements IHospitalControlador{
 
     @Override
     public String obtenerPacientes() {
-        //return null;
         List<Paciente> pacientes;
         
         StringBuilder cadena = new StringBuilder();
@@ -172,4 +171,4 @@ public class HospitalControlador implements IHospitalControlador{
     }
     
     
-}//
+}

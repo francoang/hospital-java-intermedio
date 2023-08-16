@@ -273,7 +273,6 @@ public class PersonaDAO implements IPersonaDAO{
 
     @Override
     public List<Paciente> obtenerPacientes() throws SQLException {
-//        return null;
         Connection con = verificarConexion();
         
         List<Persona> personas = obtenerPacientes(con);
@@ -307,4 +306,4 @@ public class PersonaDAO implements IPersonaDAO{
     }      
     
     
-}//
+}

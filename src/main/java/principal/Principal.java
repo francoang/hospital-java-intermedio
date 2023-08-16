@@ -64,7 +64,6 @@ public class Principal {
     }
     
     public static String listarPacientes(){
-        //return null;
         return hospitalCtrl.obtenerPacientes();
     }
     
