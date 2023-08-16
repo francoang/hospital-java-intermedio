@@ -233,7 +233,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuBuscarActionPerformed
 
     private void menuPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPacientesActionPerformed
-        JOptionPane.showMessageDialog(this, "Funcionalidad no implementada.", "¡Ups!", JOptionPane.WARNING_MESSAGE);
+
+        String listadoPacientes = Principal.listarPacientes();
+        txtAreaListado.setText(listadoPacientes);
     }//GEN-LAST:event_menuPacientesActionPerformed
 
     private void menuDoctoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDoctoresActionPerformed
