@@ -1,6 +1,7 @@
 package negocio;
 
 import dto.CambiarPersonaDTO;
+import entidades.Opinion;
 import entidades.Persona;
 
 /**
@@ -24,4 +25,6 @@ public interface IHospitalControlador {
     String obtenerPacientes();
     
     String obtenerDoctores();
+    
+    String guardarOpinion(Opinion opinion);
 }

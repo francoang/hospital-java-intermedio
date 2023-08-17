@@ -1,9 +1,12 @@
 package negocio;
 
+import dao.IOpinionDAO;
 import dao.IPersonaDAO;
+import dao.OpinionDAO;
 import dao.PersonaDAO;
 import dto.CambiarPersonaDTO;
 import entidades.Doctor;
+import entidades.Opinion;
 import entidades.Paciente;
 import entidades.Persona;
 import java.sql.Connection;
@@ -19,6 +22,7 @@ import static sql.Conexion.getConnection;
 public class HospitalControlador implements IHospitalControlador{
     
     private IPersonaDAO personaDao;
+    private IOpinionDAO opinionDao;
     private Connection conn;
 
     public HospitalControlador(boolean esTransaccion) {        
@@ -28,6 +32,8 @@ public class HospitalControlador implements IHospitalControlador{
         }else{
             personaDao = new PersonaDAO();
         }
+        
+        opinionDao = new OpinionDAO();
     }       
     
     private Connection realizarConexion(){
@@ -168,6 +174,11 @@ public class HospitalControlador implements IHospitalControlador{
         } catch (SQLException ex) {
             return "OCURRIO UN ERROR: " + ex.getMessage();
         }        
+    }
+
+    @Override
+    public String guardarOpinion(Opinion opinion) {
+        return null;
     }
     
     
