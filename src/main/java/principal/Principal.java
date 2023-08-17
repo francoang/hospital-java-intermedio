@@ -1,6 +1,7 @@
 package principal;
 
 import dto.CambiarPersonaDTO;
+import entidades.Opinion;
 import entidades.Persona;
 import gui.*;
 import javax.swing.JFrame;
@@ -65,6 +66,12 @@ public class Principal {
     
     public static String listarPacientes(){
         return hospitalCtrl.obtenerPacientes();
+    }
+    
+    public static void guardarOpinion(Opinion op, JFrame car){
+        String mensaje = hospitalCtrl.guardarOpinion(op);
+        JOptionPane.showMessageDialog(null, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);        
+        car.setVisible(false);
     }
     
 } //Fin de la clase

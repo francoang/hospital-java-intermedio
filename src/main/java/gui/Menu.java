@@ -12,7 +12,7 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu() {        
         initComponents();
     }
 
@@ -42,6 +42,8 @@ public class Menu extends javax.swing.JFrame {
         menuTodos = new javax.swing.JMenuItem();
         menuPacientes = new javax.swing.JMenuItem();
         menuDoctores = new javax.swing.JMenuItem();
+        menuOpinion = new javax.swing.JMenu();
+        menuCargarOpinion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hospital de Córdoba");
@@ -63,7 +65,7 @@ public class Menu extends javax.swing.JFrame {
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clean.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimpiar.setEnabled(false);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +178,21 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(menuListados);
 
+        menuOpinion.setText("Opinión");
+        menuOpinion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        menuCargarOpinion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuCargarOpinion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/opinion.png"))); // NOI18N
+        menuCargarOpinion.setText("Cargar Opinion");
+        menuCargarOpinion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCargarOpinionActionPerformed(evt);
+            }
+        });
+        menuOpinion.add(menuCargarOpinion);
+
+        jMenuBar1.add(menuOpinion);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,6 +275,10 @@ public class Menu extends javax.swing.JFrame {
         btnLimpiar.setEnabled(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void menuCargarOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargarOpinionActionPerformed
+        new Opinion().setVisible(true);
+    }//GEN-LAST:event_menuCargarOpinionActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
@@ -267,9 +288,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuBuscar;
     private javax.swing.JMenuItem menuCambiar;
     private javax.swing.JMenuItem menuCargar;
+    private javax.swing.JMenuItem menuCargarOpinion;
     private javax.swing.JMenuItem menuDoctores;
     private javax.swing.JMenu menuListados;
     private javax.swing.JMenuItem menuModif;
+    private javax.swing.JMenu menuOpinion;
     private javax.swing.JMenuItem menuPacientes;
     private javax.swing.JMenu menuPersona;
     private javax.swing.JMenu menuPrincipal;
