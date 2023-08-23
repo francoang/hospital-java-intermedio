@@ -9,8 +9,8 @@ import java.sql.*;
 public class Conexion {
     
     private static final String URL = "jdbc:mysql://aws.connect.psdb.cloud/hospitaldb?sslMode=VERIFY_IDENTITY";
-    private static final String JDBC_USER = "";
-    private static final String JDBC_PASS = "";
+    private static final String JDBC_USER = "y13ne3r99vf9ro0d75j9";
+    private static final String JDBC_PASS = "pscale_pw_hz7GDDz0rT75oS6J1SQs3UaNw27X8z7oBGBWJTWK5gf";
     
     public static Connection getConnection() throws SQLException{
         return DriverManager.getConnection(URL, JDBC_USER, JDBC_PASS);        
