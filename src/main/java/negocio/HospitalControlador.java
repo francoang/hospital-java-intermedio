@@ -178,7 +178,13 @@ public class HospitalControlador implements IHospitalControlador{
 
     @Override
     public String guardarOpinion(Opinion opinion) {
-        return null;
+        try {
+            OpinionDAO op = new OpinionDAO();            
+            int result = op.guardar(opinion);
+            return result > 0 ? "SE AGREGÓ UNA OPINION CON ÉXITO" : "NO SE AGREGO LA OPINION";
+        } catch (SQLException ex) {
+            return "OCURRIO UN PROBLEMA AL AGREGAR UNA OPINION: "+ ex.getMessage();
+        }
     }
     
     
