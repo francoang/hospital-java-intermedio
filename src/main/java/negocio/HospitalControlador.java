@@ -2,13 +2,16 @@ package negocio;
 
 import dao.IOpinionDAO;
 import dao.IPersonaDAO;
+import dao.ITurnoDAO;
 import dao.OpinionDAO;
 import dao.PersonaDAO;
+import dao.TurnoDAO;
 import dto.CambiarPersonaDTO;
 import entidades.Doctor;
 import entidades.Opinion;
 import entidades.Paciente;
 import entidades.Persona;
+import entidades.Turno;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,6 +26,7 @@ public class HospitalControlador implements IHospitalControlador{
     
     private IPersonaDAO personaDao;
     private IOpinionDAO opinionDao;
+    private ITurnoDAO turnoDAO;
     private Connection conn;
 
     public HospitalControlador(boolean esTransaccion) {        
@@ -34,6 +38,7 @@ public class HospitalControlador implements IHospitalControlador{
         }
         
         opinionDao = new OpinionDAO();
+        turnoDAO = new TurnoDAO();
     }       
     
     private Connection realizarConexion(){
@@ -180,6 +185,40 @@ public class HospitalControlador implements IHospitalControlador{
     public String guardarOpinion(Opinion opinion) {
         return null;
     }
+
+    @Override
+    public String guardarTurno(Turno turno) {
+        
+         try {
+            int result = turnoDAO.guardarTurno(turno);
+            return result > 0 ? "SE AGREGÓ EL TURNO CON ÉXITO" : "NO SE AGREGO EL TURNO";
+        } catch (SQLException ex) {
+            return "OCURRIO UN PROBLEMA AL AGREGAR UN TURNO: "+ ex.getMessage();
+        }
+        
+        
+    }
+    
+    
+    @Override
+    public Doctor buscarDoctorPorId(Persona per) {
+        try {
+            return personaDao.buscarDoctorPorId(per);
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+    
+    
+    @Override
+    public Paciente buscarPacientePorId(Persona per) {
+        try {
+            return personaDao.buscarPacientePorId(per);
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+    
     
     
 }

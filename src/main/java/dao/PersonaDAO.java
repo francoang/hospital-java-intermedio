@@ -27,6 +27,8 @@ public class PersonaDAO implements IPersonaDAO{
     private static final String SQL_SEL_WHERE_DOCTOR = "SELECT * FROM doctor WHERE documento = ?";
     private static final String SQL_SEL_WHERE_PACIENTE = "SELECT * FROM paciente WHERE documento = ?";
     private static final String SQL_CAMBIAR_PACIENTE = "SELECT * FROM paciente WHERE documento = ?";
+    private static final String SQL_SEL_WHERE_DOCTOR_ID = "SELECT * FROM doctor WHERE idDoctor = ?";
+    private static final String SQL_SEL_WHERE_PACIENTE_ID = "SELECT * FROM paciente WHERE idPaciente = ?";
     
     public PersonaDAO(){
         
@@ -304,6 +306,42 @@ public class PersonaDAO implements IPersonaDAO{
         
         return doctores;      
     }      
+
+    @Override
+    public Doctor buscarDoctorPorId(Persona per) throws SQLException {
+        Connection conn = verificarConexion(); 
+        
+        Doctor doc = buscarDoctoresId(conn, per);
+        return doc;
+    }
+    
+     private Doctor buscarDoctoresId(Connection conn, Persona per) throws SQLException{
+        PreparedStatement pstm = conn.prepareStatement(SQL_SEL_WHERE_DOCTOR_ID);
+        Doctor doc = (Doctor) per;
+        pstm.setInt(1, doc.getIdDoctor());
+        ResultSet rs = pstm.executeQuery();       
+        
+        return rs.next() ? recorrerDoctores(rs) : null; 
+   
+   }
+    
+
+    @Override
+    public Paciente buscarPacientePorId(Persona per) throws SQLException {
+        Connection conn = verificarConexion(); 
+        
+        Paciente pac = buscarPacientesId(conn, per);
+        return pac;
+    }
+    
+    private Paciente buscarPacientesId(Connection conn, Persona per) throws SQLException{
+        PreparedStatement pstm = conn.prepareStatement(SQL_SEL_WHERE_PACIENTE_ID);
+        Paciente pac = (Paciente) per;
+        pstm.setInt(1, pac.getIdPaciente());
+        ResultSet rs = pstm.executeQuery();       
+        
+        return rs.next() ? recorrerPacientes(rs) : null;        
+    }
     
     
 }

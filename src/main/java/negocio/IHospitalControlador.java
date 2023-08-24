@@ -1,8 +1,11 @@
 package negocio;
 
 import dto.CambiarPersonaDTO;
+import entidades.Doctor;
 import entidades.Opinion;
+import entidades.Paciente;
 import entidades.Persona;
+import entidades.Turno;
 
 /**
  *
@@ -27,4 +30,10 @@ public interface IHospitalControlador {
     String obtenerDoctores();
     
     String guardarOpinion(Opinion opinion);
+    
+    String guardarTurno(Turno turno);
+    
+    Doctor buscarDoctorPorId(Persona per);
+   
+    Paciente buscarPacientePorId(Persona per);
 }

@@ -44,6 +44,8 @@ public class Menu extends javax.swing.JFrame {
         menuDoctores = new javax.swing.JMenuItem();
         menuOpinion = new javax.swing.JMenu();
         menuCargarOpinion = new javax.swing.JMenuItem();
+        menuTurno = new javax.swing.JMenu();
+        menuCargarTurno = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hospital de Córdoba");
@@ -193,6 +195,21 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(menuOpinion);
 
+        menuTurno.setText("Turno");
+        menuTurno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        menuCargarTurno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuCargarTurno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/calendar.png"))); // NOI18N
+        menuCargarTurno.setText("Cargar turno");
+        menuCargarTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCargarTurnoActionPerformed(evt);
+            }
+        });
+        menuTurno.add(menuCargarTurno);
+
+        jMenuBar1.add(menuTurno);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -279,6 +296,10 @@ public class Menu extends javax.swing.JFrame {
         new Opinion().setVisible(true);
     }//GEN-LAST:event_menuCargarOpinionActionPerformed
 
+    private void menuCargarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargarTurnoActionPerformed
+        new Turno().setVisible(true);
+    }//GEN-LAST:event_menuCargarTurnoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
@@ -289,6 +310,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCambiar;
     private javax.swing.JMenuItem menuCargar;
     private javax.swing.JMenuItem menuCargarOpinion;
+    private javax.swing.JMenuItem menuCargarTurno;
     private javax.swing.JMenuItem menuDoctores;
     private javax.swing.JMenu menuListados;
     private javax.swing.JMenuItem menuModif;
@@ -298,6 +320,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu menuPrincipal;
     private javax.swing.JMenuItem menuSalir;
     private javax.swing.JMenuItem menuTodos;
+    private javax.swing.JMenu menuTurno;
     private javax.swing.JTextArea txtAreaListado;
     // End of variables declaration//GEN-END:variables
 }
