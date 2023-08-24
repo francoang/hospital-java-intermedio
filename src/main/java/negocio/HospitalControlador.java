@@ -6,7 +6,7 @@ import dao.OpinionDAO;
 import dao.PersonaDAO;
 import dto.CambiarPersonaDTO;
 import entidades.Doctor;
-import entidades.Opinion;
+import entidades.OpinionBean;
 import entidades.Paciente;
 import entidades.Persona;
 import java.sql.Connection;
@@ -177,10 +177,9 @@ public class HospitalControlador implements IHospitalControlador{
     }
 
     @Override
-    public String guardarOpinion(Opinion opinion) {
-        try {
-            OpinionDAO op = new OpinionDAO();            
-            int result = op.guardar(opinion);
+    public String guardarOpinion(OpinionBean opinion) {
+        try {                      
+            int result = opinionDao.guardar(opinion);
             return result > 0 ? "SE AGREGÓ UNA OPINION CON ÉXITO" : "NO SE AGREGO LA OPINION";
         } catch (SQLException ex) {
             return "OCURRIO UN PROBLEMA AL AGREGAR UNA OPINION: "+ ex.getMessage();

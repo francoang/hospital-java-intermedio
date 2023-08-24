@@ -1,17 +1,17 @@
 
 package entidades;
 
-public class Opinion {
+public class OpinionBean {
    private Integer idOpinion; 
    private Integer idPaciente;
    private Integer idDoctor;
    private Integer calificacion;
    private String mensaje;
 
-    public Opinion() {
+    public OpinionBean() {
     }
 
-    public Opinion(Integer idOpinion, Integer idPaciente, Integer idDoctor, Integer calificacion, String mensaje) {
+    public OpinionBean(Integer idOpinion, Integer idPaciente, Integer idDoctor, Integer calificacion, String mensaje) {
         this.idOpinion = idOpinion;
         this.idPaciente = idPaciente;
         this.idDoctor = idDoctor;

@@ -1,7 +1,7 @@
 
 package dao;
 
-import entidades.Opinion;
+import entidades.OpinionBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,7 +18,8 @@ public class OpinionDAO implements IOpinionDAO{
     }
     
     @Override
-    public int guardar(Opinion opinion) throws SQLException{
+    public int guardar(OpinionBean opinion) throws SQLException{
+        
         Connection conn = getConnection();
         PreparedStatement pstm = conn.prepareStatement(SQL_INSERT_OPINION);        
         pstm.setInt(1, opinion.getIdDoctor());

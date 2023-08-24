@@ -1,20 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui;
 
-import dao.OpinionDAO;
+import entidades.*;
 import dao.PersonaDAO;
-import entidades.Doctor;
-import entidades.Paciente;
 import java.sql.SQLException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import principal.Principal;
 
 /**
  *
@@ -149,18 +140,14 @@ public class Opinion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
-        entidades.Opinion op = new entidades.Opinion();
+        OpinionBean op = new OpinionBean();
+
         op.setIdDoctor(cboDoctor.getSelectedIndex());
         op.setIdPaciente(cboPaciente.getSelectedIndex());
         op.setCalificacion(Integer.parseInt(cboCalif.getSelectedItem().toString()));
         op.setMensaje(txtMensaje.getText());
         
-        OpinionDAO opdao = new OpinionDAO();
-        try {
-            opdao.guardar(op);
-        } catch (SQLException ex) {
-            
-        }
+        Principal.guardarOpinion(op, this);
     }//GEN-LAST:event_EnviarActionPerformed
 
     /**
