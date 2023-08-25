@@ -1,5 +1,8 @@
 package gui;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import principal.Principal;
 
@@ -276,7 +279,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void menuCargarOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargarOpinionActionPerformed
-        new Opinion().setVisible(true);
+            new Opinion().setVisible(true);
     }//GEN-LAST:event_menuCargarOpinionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
