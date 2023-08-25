@@ -59,19 +59,13 @@ public class Turno extends javax.swing.JFrame {
         setTitle("Cargar turno");
         setLocationByPlatform(true);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         labelPac.setText("PACIENTE");
-        jPanel1.add(labelPac, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 81, -1));
 
         labelDoc.setText("DOCTOR");
-        jPanel1.add(labelDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 55, 23));
 
         labelTurno.setText("TURNO");
-        jPanel1.add(labelTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 48, 22));
 
         labelMot.setText("MOTIVO DE CONSULTA");
-        jPanel1.add(labelMot, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 170, -1));
 
         buttPac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         buttPac.setText("Id Paciente");
@@ -80,7 +74,6 @@ public class Turno extends javax.swing.JFrame {
                 buttPacActionPerformed(evt);
             }
         });
-        jPanel1.add(buttPac, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 28, -1, -1));
 
         buttDoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         buttDoc.setText("Id Doctor");
@@ -89,45 +82,123 @@ public class Turno extends javax.swing.JFrame {
                 buttDocActionPerformed(evt);
             }
         });
-        jPanel1.add(buttDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 111, -1));
-        jPanel1.add(fieldFec, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 134, -1));
-        jPanel1.add(fieldDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 171, -1));
 
         areaPac.setColumns(20);
         areaPac.setRows(5);
         jScrollPane3.setViewportView(areaPac);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 570, 30));
-        jPanel1.add(fieldPac, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 171, -1));
-
         areaDoc.setColumns(20);
         areaDoc.setRows(5);
         jScrollPane4.setViewportView(areaDoc);
-
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 150, 570, 29));
 
         fieldHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldHoraActionPerformed(evt);
             }
         });
-        jPanel1.add(fieldHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 134, -1));
 
         jLabel1.setText("Hora");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 73, 20));
 
         labelFec.setText("Fecha");
-        jPanel1.add(labelFec, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 48, -1));
-        jPanel1.add(fieldMot, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 570, -1));
 
         buttConf.setText("Confirmar");
-        jPanel1.add(buttConf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 110, -1));
 
         buttCanc.setText("Cancelar");
-        jPanel1.add(buttCanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 120, -1));
 
         buttMenu.setText("MENU");
-        jPanel1.add(buttMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelPac, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(buttPac)))
+                .addGap(12, 12, 12)
+                .addComponent(fieldPac, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(labelDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(buttDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(fieldDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(labelTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(fieldFec, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelFec, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(fieldHora, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(labelMot, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(fieldMot, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(buttConf, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(buttCanc, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(220, 220, 220)
+                .addComponent(buttMenu))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttPac)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelPac)
+                            .addComponent(fieldPac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttDoc)
+                    .addComponent(fieldDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldFec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFec)
+                    .addComponent(fieldHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(labelMot)
+                .addGap(14, 14, 14)
+                .addComponent(fieldMot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttConf)
+                    .addComponent(buttCanc)
+                    .addComponent(buttMenu)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,12 +222,6 @@ public class Turno extends javax.swing.JFrame {
 
     private void buttPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttPacActionPerformed
 
-//        Integer idPaciente = Integer.parseInt(fieldPac.getText());
-//        Persona per = new Persona();
-//        Paciente pac = (Paciente) per;
-//        pac.setIdPaciente(idPaciente); 
-//        Principal.buscarPacientePorId(per, this);
-//        areaPac.add(this);
         Integer idPaciente = Integer.parseInt(fieldPac.getText());
 
         Paciente pac = new Paciente();
@@ -179,8 +244,7 @@ public class Turno extends javax.swing.JFrame {
         Doctor doc = (Doctor) per;
         doc.setIdDoctor(idDoctor);
         Principal.buscarDoctorPorId(per, this);
-     //   jTextField1.add(this);
-
+     
     }//GEN-LAST:event_buttDocActionPerformed
 
 
