@@ -279,11 +279,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void menuCargarOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargarOpinionActionPerformed
-        try {
             new Opinion().setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_menuCargarOpinionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

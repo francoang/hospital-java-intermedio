@@ -16,7 +16,7 @@ public class Opinion extends javax.swing.JFrame {
     /**
      * Creates new form Opinion
      */
-    public Opinion() throws SQLException {        
+    public Opinion(){        
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -75,6 +75,11 @@ public class Opinion extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +155,10 @@ public class Opinion extends javax.swing.JFrame {
         Principal.guardarOpinion(op, this);
     }//GEN-LAST:event_EnviarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose(); 
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,12 +179,13 @@ public class Opinion extends javax.swing.JFrame {
     private javax.swing.JTextArea txtMensaje;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarCbo() throws SQLException {
-        PersonaDAO persona = new PersonaDAO();
+    private void cargarCbo(){
+        
         DefaultComboBoxModel docs = new DefaultComboBoxModel();               
-        List<Doctor> lstdocs = persona.obtenerDoctores();
+        List<Doctor> lstdocs = Principal.listadoDoctores();
+        
         DefaultComboBoxModel pac = new DefaultComboBoxModel();               
-        List<Paciente> lstpaciente = persona.obtenerPacientes();
+        List<Paciente> lstpaciente = Principal.listadoPacientes();
         
         for (Doctor doc : lstdocs) {
             docs.addElement(doc.getNombreApellido());

@@ -29,7 +29,7 @@ public class OpinionDAO implements IOpinionDAO{
         
         int registros = pstm.executeUpdate();
         close(pstm);
-
+        close(conn);
         return registros;
     }
         

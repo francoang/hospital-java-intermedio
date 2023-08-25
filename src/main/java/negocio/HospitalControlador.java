@@ -154,6 +154,15 @@ public class HospitalControlador implements IHospitalControlador{
             return "OCURRIO UN ERROR: " + ex.getMessage();
         }
     }
+        public List<Paciente> obtenerListaPacientes() {
+               
+        try {
+            return personaDao.obtenerPacientes();
+  
+        } catch (SQLException ex) {
+            return null;
+        }        
+    }
 
     @Override
     public String obtenerDoctores() {
@@ -173,6 +182,16 @@ public class HospitalControlador implements IHospitalControlador{
             }
         } catch (SQLException ex) {
             return "OCURRIO UN ERROR: " + ex.getMessage();
+        }        
+    }
+    
+    public List<Doctor> obtenerListaDoctores() {
+               
+        try {
+            return personaDao.obtenerDoctores();
+  
+        } catch (SQLException ex) {
+            return null;
         }        
     }
 

@@ -1,9 +1,12 @@
 package principal;
 
 import dto.CambiarPersonaDTO;
+import entidades.Doctor;
 import entidades.OpinionBean;
+import entidades.Paciente;
 import entidades.Persona;
 import gui.*;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import negocio.HospitalControlador;
@@ -64,8 +67,16 @@ public class Principal {
         return hospitalCtrl.obtenerDoctores();
     }
     
+    public static List<Doctor> listadoDoctores(){
+        return hospitalCtrl.obtenerListaDoctores();
+    }
+    
     public static String listarPacientes(){
         return hospitalCtrl.obtenerPacientes();
+    }
+    
+    public static List<Paciente> listadoPacientes(){
+        return hospitalCtrl.obtenerListaPacientes();
     }
     
     public static void guardarOpinion(OpinionBean op, JFrame car){
