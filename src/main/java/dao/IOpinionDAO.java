@@ -1,7 +1,8 @@
 package dao;
 
-import entidades.Opinion;
+import entidades.OpinionBean;
+import java.sql.SQLException;
 
 public interface IOpinionDAO {
-    int guardar(Opinion opinion);
+    int guardar(OpinionBean opinion) throws SQLException;
 }

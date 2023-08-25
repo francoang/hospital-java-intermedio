@@ -8,7 +8,7 @@ import dao.PersonaDAO;
 import dao.TurnoDAO;
 import dto.CambiarPersonaDTO;
 import entidades.Doctor;
-import entidades.Opinion;
+import entidades.OpinionBean;
 import entidades.Paciente;
 import entidades.Persona;
 import entidades.Turno;
@@ -159,6 +159,15 @@ public class HospitalControlador implements IHospitalControlador{
             return "OCURRIO UN ERROR: " + ex.getMessage();
         }
     }
+        public List<Paciente> obtenerListaPacientes() {
+               
+        try {
+            return personaDao.obtenerPacientes();
+  
+        } catch (SQLException ex) {
+            return null;
+        }        
+    }
 
     @Override
     public String obtenerDoctores() {
@@ -180,10 +189,25 @@ public class HospitalControlador implements IHospitalControlador{
             return "OCURRIO UN ERROR: " + ex.getMessage();
         }        
     }
+    
+    public List<Doctor> obtenerListaDoctores() {
+               
+        try {
+            return personaDao.obtenerDoctores();
+  
+        } catch (SQLException ex) {
+            return null;
+        }        
+    }
 
     @Override
-    public String guardarOpinion(Opinion opinion) {
-        return null;
+    public String guardarOpinion(OpinionBean opinion) {
+        try {                      
+            int result = opinionDao.guardar(opinion);
+            return result > 0 ? "SE AGREGÓ UNA OPINION CON ÉXITO" : "NO SE AGREGO LA OPINION";
+        } catch (SQLException ex) {
+            return "OCURRIO UN PROBLEMA AL AGREGAR UNA OPINION: "+ ex.getMessage();
+        }
     }
 
     @Override
