@@ -28,9 +28,10 @@ public interface IHospitalControlador {
     
     String guardarTurno(Turno turno);
     
-    Doctor buscarDoctorPorId(Persona per);
+    Doctor buscarDoctorPorId(Doctor doc);
    
-    Paciente buscarPacientePorId(Persona per);
+    Paciente buscarPacientePorId(Paciente pac);
+    
     List<Doctor> obtenerListaDoctores();
     
     String guardarOpinion(OpinionBean opinion);

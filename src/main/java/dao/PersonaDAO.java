@@ -311,8 +311,7 @@ public class PersonaDAO implements IPersonaDAO {
     }
 
     @Override
-    public Doctor buscarDoctorPorId(Persona per) throws SQLException {
-        Doctor doc = (Doctor) per;
+    public Doctor buscarDoctorPorId(Doctor doc) throws SQLException {        
         Connection conn = verificarConexion();
         PreparedStatement pstm = conn.prepareStatement(SQL_SEL_WHERE_DOCTOR_ID);
         pstm.setInt(1, doc.getIdDoctor());
@@ -327,15 +326,12 @@ public class PersonaDAO implements IPersonaDAO {
         return doc;
     }
 
-    private Doctor buscarDoctoresId(ResultSet rs) throws SQLException {
-        
+    private Doctor buscarDoctoresId(ResultSet rs) throws SQLException {        
         return rs.next() ? recorrerDoctores(rs) : null;
-
     }
 
     @Override
-    public Paciente buscarPacientePorId(Persona per) throws SQLException {
-        Paciente pac = (Paciente) per;
+    public Paciente buscarPacientePorId(Paciente pac) throws SQLException {       
         Connection conn = verificarConexion();
         PreparedStatement pstm = conn.prepareStatement(SQL_SEL_WHERE_PACIENTE_ID);
         pstm.setInt(1, pac.getIdPaciente());
@@ -350,8 +346,7 @@ public class PersonaDAO implements IPersonaDAO {
         return pac;
     }
 
-    private Paciente buscarPacientesId(ResultSet rs) throws SQLException {
-    
+    private Paciente buscarPacientesId(ResultSet rs) throws SQLException {    
         return rs.next() ? recorrerPacientes(rs) : null;
     }
 

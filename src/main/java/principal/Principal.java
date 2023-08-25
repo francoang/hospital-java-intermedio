@@ -93,12 +93,12 @@ public class Principal {
         car.setVisible(false);
     }
 
-    public static Doctor buscarDoctorPorId(Persona per, JFrame car) {
-        return hospitalCtrl.buscarDoctorPorId(per);
+    public static Doctor buscarDoctorPorId(Doctor doc, JFrame car) {
+        return hospitalCtrl.buscarDoctorPorId(doc);
     }
 
-    public static Paciente buscarPacientePorId(Persona per, JFrame car) {
-        return hospitalCtrl.buscarPacientePorId(per);
+    public static Paciente buscarPacientePorId(Paciente pac, JFrame car) {
+        return hospitalCtrl.buscarPacientePorId(pac);
     }
 
 } //Fin de la clase

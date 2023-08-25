@@ -33,12 +33,13 @@ public class HospitalControlador implements IHospitalControlador{
         if(esTransaccion){
             conn = realizarConexion();
             personaDao = new PersonaDAO(conn);
+            opinionDao = new OpinionDAO(conn);
+            turnoDAO = new TurnoDAO(conn);
         }else{
             personaDao = new PersonaDAO();
-        }
-        
-        opinionDao = new OpinionDAO();
-        turnoDAO = new TurnoDAO();
+            opinionDao = new OpinionDAO();
+            turnoDAO = new TurnoDAO();
+        }                
     }       
     
     private Connection realizarConexion(){
@@ -225,9 +226,9 @@ public class HospitalControlador implements IHospitalControlador{
     
     
     @Override
-    public Doctor buscarDoctorPorId(Persona per) {
+    public Doctor buscarDoctorPorId(Doctor doc) {
         try {
-            return personaDao.buscarDoctorPorId(per);
+            return personaDao.buscarDoctorPorId(doc);
         } catch (SQLException ex) {
             return null;
         }
@@ -235,9 +236,9 @@ public class HospitalControlador implements IHospitalControlador{
     
     
     @Override
-    public Paciente buscarPacientePorId(Persona per) {
+    public Paciente buscarPacientePorId(Paciente pac) {
         try {
-            return personaDao.buscarPacientePorId(per);
+            return personaDao.buscarPacientePorId(pac);
         } catch (SQLException ex) {
             return null;
         }

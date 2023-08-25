@@ -11,6 +11,9 @@ public class Doctor extends Persona implements Comparable<Doctor> {
     private Integer idDoctor;
     private Integer matricula;
 
+    public Doctor() {
+    }        
+
     public Doctor(Integer matricula, Integer idDoctor, Integer documento, String nombreApellido) {
         super(documento, nombreApellido);
         this.idDoctor = idDoctor;

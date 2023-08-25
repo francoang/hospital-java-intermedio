@@ -9,6 +9,7 @@ import static sql.Conexion.*;
 
 public class OpinionDAO implements IOpinionDAO{
        
+    private Connection conexionTransaccional;
     private static final String SQL_SELECT_OPINION = "SELECT * FROM opinion";        
     private static final String SQL_INSERT_OPINION = "INSERT INTO opinion(idDoctor, idPaciente, calificacion, mensaje) VALUES(?,?,?,?)";
     
@@ -17,10 +18,13 @@ public class OpinionDAO implements IOpinionDAO{
         
     }
     
+    public OpinionDAO(Connection conexionTransaccional) {
+        this.conexionTransaccional = conexionTransaccional;
+    }
+    
     @Override
-    public int guardar(OpinionBean opinion) throws SQLException{
-        
-        Connection conn = getConnection();
+    public int guardar(OpinionBean opinion) throws SQLException{        
+        Connection conn = verificarConexion();
         PreparedStatement pstm = conn.prepareStatement(SQL_INSERT_OPINION);        
         pstm.setInt(1, opinion.getIdDoctor());
         pstm.setInt(2, opinion.getIdPaciente());
@@ -31,6 +35,11 @@ public class OpinionDAO implements IOpinionDAO{
         close(pstm);
         close(conn);
         return registros;
+    }
+    
+    private Connection verificarConexion() throws SQLException {
+        return this.conexionTransaccional != null
+                ? this.conexionTransaccional : getConnection();
     }
         
 }
