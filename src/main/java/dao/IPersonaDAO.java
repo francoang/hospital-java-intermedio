@@ -29,4 +29,8 @@ public interface IPersonaDAO {
     List<Paciente> obtenerPacientes() throws SQLException;
     
     List<Doctor> obtenerDoctores() throws SQLException;
+    
+    Doctor buscarDoctorPorId(Persona per) throws SQLException;
+   
+    Paciente buscarPacientePorId(Persona per) throws SQLException;
 }

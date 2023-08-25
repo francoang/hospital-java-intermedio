@@ -1,10 +1,7 @@
 package negocio;
 
 import dto.CambiarPersonaDTO;
-import entidades.Doctor;
-import entidades.OpinionBean;
-import entidades.Paciente;
-import entidades.Persona;
+import entidades.*;
 import java.util.List;
 
 /**
@@ -29,6 +26,11 @@ public interface IHospitalControlador {
     
     String obtenerDoctores();
     
+    String guardarTurno(Turno turno);
+    
+    Doctor buscarDoctorPorId(Persona per);
+   
+    Paciente buscarPacientePorId(Persona per);
     List<Doctor> obtenerListaDoctores();
     
     String guardarOpinion(OpinionBean opinion);
