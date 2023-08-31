@@ -35,6 +35,8 @@ public interface IHospitalControlador {
     List<Doctor> obtenerListaDoctores();
     
     String guardarOpinion(OpinionBean opinion);
+    
+    String guardarReporte(Reporte rep);
 
     public List<Paciente> obtenerListaPacientes();
 }

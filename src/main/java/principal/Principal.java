@@ -5,8 +5,10 @@ import entidades.Doctor;
 import entidades.OpinionBean;
 import entidades.Paciente;
 import entidades.Persona;
+import entidades.Reporte;
 import entidades.Turno;
 import gui.*;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -82,7 +84,9 @@ public class Principal {
     }
     
     public static void guardarOpinion(OpinionBean op, JFrame car){
-        String mensaje = hospitalCtrl.guardarOpinion(op);
+        String mensaje = hospitalCtrl.guardarOpinion(op);   
+        Reporte rep = new Reporte(0, "reporte-log.txt", LocalDate.now());        
+        String mensajeRep = hospitalCtrl.guardarReporte(rep);
         JOptionPane.showMessageDialog(null, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
         car.setVisible(false);
     }
