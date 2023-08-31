@@ -1,17 +1,8 @@
 package negocio;
 
-import dao.IOpinionDAO;
-import dao.IPersonaDAO;
-import dao.ITurnoDAO;
-import dao.OpinionDAO;
-import dao.PersonaDAO;
-import dao.TurnoDAO;
+import dao.*;
 import dto.CambiarPersonaDTO;
-import entidades.Doctor;
-import entidades.OpinionBean;
-import entidades.Paciente;
-import entidades.Persona;
-import entidades.Turno;
+import entidades.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,6 +18,7 @@ public class HospitalControlador implements IHospitalControlador{
     private IPersonaDAO personaDao;
     private IOpinionDAO opinionDao;
     private ITurnoDAO turnoDAO;
+    private IReporteTurnoDAO reporteTurnoDAO;
     private Connection conn;
 
     public HospitalControlador(boolean esTransaccion) {        
@@ -35,10 +27,12 @@ public class HospitalControlador implements IHospitalControlador{
             personaDao = new PersonaDAO(conn);
             opinionDao = new OpinionDAO(conn);
             turnoDAO = new TurnoDAO(conn);
+            reporteTurnoDAO = new ReporteTurnoDAO(conn);
         }else{
             personaDao = new PersonaDAO();
             opinionDao = new OpinionDAO();
             turnoDAO = new TurnoDAO();
+            reporteTurnoDAO = new ReporteTurnoDAO();
         }                
     }       
     
@@ -142,7 +136,6 @@ public class HospitalControlador implements IHospitalControlador{
     @Override
     public String obtenerPacientes() {
         List<Paciente> pacientes;
-        
         StringBuilder cadena = new StringBuilder();
         
         try {
@@ -160,11 +153,10 @@ public class HospitalControlador implements IHospitalControlador{
             return "OCURRIO UN ERROR: " + ex.getMessage();
         }
     }
-        public List<Paciente> obtenerListaPacientes() {
-               
+    
+    public List<Paciente> obtenerListaPacientes() {
         try {
             return personaDao.obtenerPacientes();
-  
         } catch (SQLException ex) {
             return null;
         }        
@@ -172,13 +164,12 @@ public class HospitalControlador implements IHospitalControlador{
 
     @Override
     public String obtenerDoctores() {
-       List<Doctor> doctores;
+        List<Doctor> doctores;
         StringBuilder cadena = new StringBuilder();
         
         try {
             doctores = personaDao.obtenerDoctores();
             for (Doctor doctor : doctores) {
-                //Para personalizar la salida
                 cadena.append(doctor).append("\n");
             }
             if (!doctores.isEmpty()) {
@@ -191,11 +182,10 @@ public class HospitalControlador implements IHospitalControlador{
         }        
     }
     
+    @Override
     public List<Doctor> obtenerListaDoctores() {
-               
         try {
             return personaDao.obtenerDoctores();
-  
         } catch (SQLException ex) {
             return null;
         }        
@@ -212,18 +202,14 @@ public class HospitalControlador implements IHospitalControlador{
     }
 
     @Override
-    public String guardarTurno(Turno turno) {
-        
-         try {
+    public String guardarTurno(TurnoBean turno) {
+        try {
             int result = turnoDAO.guardarTurno(turno);
             return result > 0 ? "SE AGREGÓ EL TURNO CON ÉXITO" : "NO SE AGREGO EL TURNO";
         } catch (SQLException ex) {
             return "OCURRIO UN PROBLEMA AL AGREGAR UN TURNO: "+ ex.getMessage();
         }
-        
-        
-    }
-    
+    }    
     
     @Override
     public Doctor buscarDoctorPorId(Doctor doc) {
@@ -233,8 +219,7 @@ public class HospitalControlador implements IHospitalControlador{
             return null;
         }
     }
-    
-    
+        
     @Override
     public Paciente buscarPacientePorId(Paciente pac) {
         try {
@@ -242,8 +227,15 @@ public class HospitalControlador implements IHospitalControlador{
         } catch (SQLException ex) {
             return null;
         }
+    }   
+
+    @Override
+    public String enviarReporteTurno(ReporteTurnoBean reporteTurno) {
+        try {
+            int result = reporteTurnoDAO.enviarReporteTurno(reporteTurno);
+            return result > 0 ? "SE AGREGO REPORTE TURNO CON EXITO" : "NO SE AGREGO REPORTE TURNO";
+        } catch (SQLException ex) {
+            return "OCURRIO UN PROBLEMA AL AGREGAR EL REPORTE TURNO: "+ ex.getMessage();
+        }
     }
-    
-    
-    
 }

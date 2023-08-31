@@ -277,7 +277,6 @@ public class PersonaDAO implements IPersonaDAO {
     @Override
     public List<Paciente> obtenerPacientes() throws SQLException {
         Connection con = verificarConexion();
-
         List<Persona> personas = obtenerPacientes(con);
         List<Paciente> pacientes = new ArrayList<>();
 
@@ -294,9 +293,8 @@ public class PersonaDAO implements IPersonaDAO {
 
     @Override
     public List<Doctor> obtenerDoctores() throws SQLException {
-
-        Connection conn = verificarConexion();
-        List<Persona> personas = obtenerDoctores(conn);
+        Connection con = verificarConexion();
+        List<Persona> personas = obtenerDoctores(con);
         List<Doctor> doctores = new ArrayList<>();
 
         for (Persona persona : personas) {
@@ -304,7 +302,7 @@ public class PersonaDAO implements IPersonaDAO {
         }
 
         if (this.conexionTransaccional == null) {
-            close(conn);
+            close(con);
         }
 
         return doctores;

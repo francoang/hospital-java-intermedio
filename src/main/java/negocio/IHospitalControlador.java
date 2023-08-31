@@ -26,7 +26,7 @@ public interface IHospitalControlador {
     
     String obtenerDoctores();
     
-    String guardarTurno(Turno turno);
+    String guardarTurno(TurnoBean turno);
     
     Doctor buscarDoctorPorId(Doctor doc);
    
@@ -37,4 +37,6 @@ public interface IHospitalControlador {
     String guardarOpinion(OpinionBean opinion);
 
     public List<Paciente> obtenerListaPacientes();
+    
+    String enviarReporteTurno (ReporteTurnoBean reporteTurno);
 }
