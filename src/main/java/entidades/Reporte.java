@@ -8,8 +8,7 @@ public class Reporte {
     private String nombre;
     private LocalDate fecha;
 
-    public Reporte(int idReporte, String nombre, LocalDate fecha) {
-        this.idReporte = idReporte;
+    public Reporte(String nombre, LocalDate fecha) {
         this.nombre = nombre;
         this.fecha = fecha;
     }

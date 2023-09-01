@@ -85,7 +85,7 @@ public class Principal {
     
     public static void guardarOpinion(OpinionBean op, JFrame car){
         String mensaje = hospitalCtrl.guardarOpinion(op);   
-        Reporte rep = new Reporte(0, "reporte-log.txt", LocalDate.now());        
+        Reporte rep = new Reporte("reporte-log.txt", LocalDate.now());        
         String mensajeRep = hospitalCtrl.guardarReporte(rep);
         JOptionPane.showMessageDialog(null, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
         car.setVisible(false);

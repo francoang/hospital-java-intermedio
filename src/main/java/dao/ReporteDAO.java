@@ -12,7 +12,7 @@ import static sql.Conexion.getConnection;
 public class ReporteDAO implements IReporteDAO{
 
     private Connection conexionTransaccional;
-    private static final String SQL_INSERT_REPORTE = "INSERT INTO reporte(idReporte, nombre, fecha) VALUES(?,?,?)";
+    private static final String SQL_INSERT_REPORTE = "INSERT INTO reporte(nombre, fecha) VALUES(?,?)";
 
     public ReporteDAO() {
     }
@@ -32,9 +32,8 @@ public class ReporteDAO implements IReporteDAO{
         
         Connection conn = verificarConexion();
         PreparedStatement pstm = conn.prepareStatement(SQL_INSERT_REPORTE);        
-        pstm.setInt(1, rep.getIdReporte());
-        pstm.setString(2, rep.getNombre());
-        pstm.setDate(3, Date.valueOf(rep.getFecha()));
+        pstm.setString(1, rep.getNombre());
+        pstm.setDate(2, Date.valueOf(rep.getFecha()));
                 
         int registros = pstm.executeUpdate();
         
