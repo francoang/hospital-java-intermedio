@@ -1,18 +1,20 @@
 
 package entidades;
 
-public class Turno {
+import java.sql.Date;
+
+public class TurnoBean {
     
     private Integer idTurno;
     private Integer idPaciente;
     private Integer idDoctor;
-    private Integer fecha;
+    private Date fecha;
     private String motivo;
 
-    public Turno() {
+    public TurnoBean() {
     }
 
-    public Turno(Integer idTurno, Integer idPaciente, Integer idDoctor, Integer fecha, String motivo) {
+    public TurnoBean(Integer idTurno, Integer idPaciente, Integer idDoctor, Date fecha, String motivo) {
         this.idTurno = idTurno;
         this.idPaciente = idPaciente;
         this.idDoctor = idDoctor;
@@ -44,11 +46,11 @@ public class Turno {
         this.idDoctor = idDoctor;
     }
 
-    public Integer getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Integer fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -64,7 +66,5 @@ public class Turno {
     public String toString() {
         return "Turnos{" + "idTurno=" + idTurno + ", idPaciente=" + idPaciente + ", idDoctor=" + idDoctor + ", fecha=" + fecha + ", motivo=" + motivo + '}';
     }
-    
-    
-    
+   
 }

@@ -1,14 +1,11 @@
 package principal;
 
 import dto.CambiarPersonaDTO;
-import entidades.Doctor;
-import entidades.OpinionBean;
-import entidades.Paciente;
-import entidades.Persona;
-import entidades.Reporte;
-import entidades.Turno;
+import entidades.*;
 import gui.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -69,7 +66,6 @@ public class Principal {
     public static String listarDoctores(){
         return hospitalCtrl.obtenerDoctores();
     }
-
     
     public static List<Doctor> listadoDoctores(){
         return hospitalCtrl.obtenerListaDoctores();
@@ -91,7 +87,7 @@ public class Principal {
         car.setVisible(false);
     }
 
-    public static void guardarTurno(Turno tu, JFrame car) {
+    public static void guardarTurno(TurnoBean tu, JFrame car) {
         String mensaje = hospitalCtrl.guardarTurno(tu);
         JOptionPane.showMessageDialog(null, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
         car.setVisible(false);
@@ -105,4 +101,19 @@ public class Principal {
         return hospitalCtrl.buscarPacientePorId(pac);
     }
 
+    public static String fechaActual() {
+        LocalDate fechaHoy = LocalDate.now();
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String resultado = formatoFecha.format(fechaHoy);
+        
+        return resultado;
+    }
+    
+    public static void enviarReporteTurno(ReporteTurnoBean rt, JFrame car){
+        String mensaje = hospitalCtrl.enviarReporteTurno(rt);
+        JOptionPane.showMessageDialog(null, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+        car.setVisible(false);
+    }
+    
+        
 } //Fin de la clase
