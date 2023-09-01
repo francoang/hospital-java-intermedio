@@ -2,15 +2,18 @@ package negocio;
 
 import dao.IOpinionDAO;
 import dao.IPersonaDAO;
+import dao.IReporteDAO;
 import dao.ITurnoDAO;
 import dao.OpinionDAO;
 import dao.PersonaDAO;
+import dao.ReporteDAO;
 import dao.TurnoDAO;
 import dto.CambiarPersonaDTO;
 import entidades.Doctor;
 import entidades.OpinionBean;
 import entidades.Paciente;
 import entidades.Persona;
+import entidades.Reporte;
 import entidades.Turno;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,6 +29,7 @@ public class HospitalControlador implements IHospitalControlador{
     
     private IPersonaDAO personaDao;
     private IOpinionDAO opinionDao;
+    private IReporteDAO reporteDao;
     private ITurnoDAO turnoDAO;
     private Connection conn;
 
@@ -38,8 +42,9 @@ public class HospitalControlador implements IHospitalControlador{
         }else{
             personaDao = new PersonaDAO();
             opinionDao = new OpinionDAO();
+            reporteDao = new ReporteDAO();
             turnoDAO = new TurnoDAO();
-        }                
+        }            
     }       
     
     private Connection realizarConexion(){
@@ -204,7 +209,7 @@ public class HospitalControlador implements IHospitalControlador{
     @Override
     public String guardarOpinion(OpinionBean opinion) {
         try {                      
-            int result = opinionDao.guardar(opinion);
+            int result = opinionDao.guardar(opinion, true); 
             return result > 0 ? "SE AGREGÓ UNA OPINION CON ÉXITO" : "NO SE AGREGO LA OPINION";
         } catch (SQLException ex) {
             return "OCURRIO UN PROBLEMA AL AGREGAR UNA OPINION: "+ ex.getMessage();
@@ -213,15 +218,12 @@ public class HospitalControlador implements IHospitalControlador{
 
     @Override
     public String guardarTurno(Turno turno) {
-        
          try {
             int result = turnoDAO.guardarTurno(turno);
             return result > 0 ? "SE AGREGÓ EL TURNO CON ÉXITO" : "NO SE AGREGO EL TURNO";
         } catch (SQLException ex) {
             return "OCURRIO UN PROBLEMA AL AGREGAR UN TURNO: "+ ex.getMessage();
         }
-        
-        
     }
     
     
@@ -243,7 +245,14 @@ public class HospitalControlador implements IHospitalControlador{
             return null;
         }
     }
-    
-    
-    
+
+    @Override
+    public String guardarReporte(Reporte rep) {
+        try {                      
+            int result = reporteDao.guardar(rep);            
+            return result > 0 ? "SE AGREGÓ UN REPORTE CON ÉXITO" : "NO SE AGREGO EL REPORTE";
+        } catch (SQLException ex) {
+            return "OCURRIO UN PROBLEMA AL AGREGAR UN REPORTE: "+ ex.getMessage();
+        }
+    }
 }
