@@ -17,6 +17,7 @@ public class HospitalControlador implements IHospitalControlador{
     
     private IPersonaDAO personaDao;
     private IOpinionDAO opinionDao;
+    private IReporteDAO reporteDao;
     private ITurnoDAO turnoDAO;
     private IReporteTurnoDAO reporteTurnoDAO;
     private Connection conn;
@@ -31,9 +32,11 @@ public class HospitalControlador implements IHospitalControlador{
         }else{
             personaDao = new PersonaDAO();
             opinionDao = new OpinionDAO();
+            reporteDao = new ReporteDAO();
             turnoDAO = new TurnoDAO();
             reporteTurnoDAO = new ReporteTurnoDAO();
         }                
+
     }       
     
     private Connection realizarConexion(){
@@ -194,7 +197,7 @@ public class HospitalControlador implements IHospitalControlador{
     @Override
     public String guardarOpinion(OpinionBean opinion) {
         try {                      
-            int result = opinionDao.guardar(opinion);
+            int result = opinionDao.guardar(opinion, true); 
             return result > 0 ? "SE AGREGÓ UNA OPINION CON ÉXITO" : "NO SE AGREGO LA OPINION";
         } catch (SQLException ex) {
             return "OCURRIO UN PROBLEMA AL AGREGAR UNA OPINION: "+ ex.getMessage();
@@ -210,6 +213,7 @@ public class HospitalControlador implements IHospitalControlador{
             return "OCURRIO UN PROBLEMA AL AGREGAR UN TURNO: "+ ex.getMessage();
         }
     }    
+
     
     @Override
     public Doctor buscarDoctorPorId(Doctor doc) {
@@ -236,6 +240,16 @@ public class HospitalControlador implements IHospitalControlador{
             return result > 0 ? "SE AGREGO REPORTE TURNO CON EXITO" : "NO SE AGREGO REPORTE TURNO";
         } catch (SQLException ex) {
             return "OCURRIO UN PROBLEMA AL AGREGAR EL REPORTE TURNO: "+ ex.getMessage();
+        }
+    }
+  
+    @Override
+    public String guardarReporte(Reporte rep) {
+        try {                      
+            int result = reporteDao.guardar(rep);            
+            return result > 0 ? "SE AGREGÓ UN REPORTE CON ÉXITO" : "NO SE AGREGO EL REPORTE";
+        } catch (SQLException ex) {
+            return "OCURRIO UN PROBLEMA AL AGREGAR UN REPORTE: "+ ex.getMessage();
         }
     }
 }
